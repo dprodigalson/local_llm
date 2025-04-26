@@ -1,0 +1,11 @@
+version: '3'
+services:
+  llm-api:
+    build: .
+    ports:
+      - "8000:8000"   # FastAPI API
+      - "11434:11434" # Ollama server
+    volumes:
+      - ${docker_mounts}/ollama/.ollama:/root/.ollama  # Windows home directory mapping
+    tty: true
+    stdin_open: true
